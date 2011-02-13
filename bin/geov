@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+
+#require 'geov'
+path = File.expand_path "../../", __FILE__
+require "#{path}/lib/geov"
+
+address = ARGV[0]
+mode    = ARGV[1] || :default
+
+# modes:
+#   :default - prints output
+#   :browser - opens a browser
+
+geov = Geov.new(ARGV[0])
+
+case mode.to_sym
+when :browser
+  `open '#{geov.gmaps_url}'`
+else # :default
+  puts "#{geov.city} - #{geov.country}"
+  puts "gmaps: #{geov.gmaps_url}"
+end
