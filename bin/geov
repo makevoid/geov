@@ -7,6 +7,11 @@ require "#{path}/lib/geov"
 address = ARGV[0]
 mode    = ARGV[1] || :default
 
+if ARGV[0].nil? || ARGV[0] == ""
+  puts "You need to provide an ip to geov!\nexample: geov 94.23.210.6"
+  exit
+end
+
 # modes:
 #   :default - prints output
 #   :browser - opens a browser
